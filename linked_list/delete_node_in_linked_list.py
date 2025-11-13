@@ -40,3 +40,62 @@
 # -1000 <= Node.val <= 1000
 # The value of each node in the list is unique.
 # The node to be deleted is in the list and is not a tail node.
+
+
+
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def deleteNode(self, node):
+        """
+        :type node: ListNode
+        :rtype: void Do not return anything, modify node in-place instead.
+        """
+
+        node.val = node.next.val # copy the next nodes value [4 -> 5 -> 1 -> 9] ie copy node(1) into node(5) which now becomes 4 -> 1 -> 1 -> 9
+        node.next = node.next.next 
+
+
+# And node points to the node with value 5.
+
+# node.val = node.next.val
+# → copies the next node’s (1) value into the current node (5).
+# Now the list looks like:
+# 4 -> 1 -> 1 -> 9
+
+# node.next = node.next.next
+# → skips the second “1” node, linking directly to 9.
+# Final list:
+# 4 -> 1 -> 9
+
+
+# ⚠️ Why this works
+
+# You don’t need to actually “delete” the node from memory.
+
+# You just overwrite its data and relink the next pointer.
+
+# The original “next” node is no longer part of the list (Python garbage collector will remove it).
+
+# Build the list
+# head = ListNode(4)
+# head.next = ListNode(5)
+# head.next.next = ListNode(1)
+# head.next.next.next = ListNode(9)
+
+# # Node to delete is node with value 5
+# node_to_delete = head.next
+
+# Solution().deleteNode(node_to_delete)
+
+# # Print the updated list
+# current = head
+# while current:
+#     print(current.val, end=" -> ")
+#     current = current.next
+# # Output should be: 4 -> 1 -> 9 ->
