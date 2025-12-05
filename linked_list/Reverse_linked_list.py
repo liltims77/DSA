@@ -32,9 +32,9 @@ class Solution:
 
         while curr != None:
             temp = curr.next
-            curr.next = prev
-            prev = curr
-            curr = temp
+            curr.next = prev #curr.next: is the pointer of the curr node #reverse curr: note that prev is None ie curr.next = None
+            prev = curr  #Move prev forward:
+            curr = temp #Move curr forward:
         return prev
     
 
