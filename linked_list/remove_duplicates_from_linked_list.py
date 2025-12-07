@@ -26,9 +26,9 @@ class Solution:
         curr = head
 
         while curr is not None:
-            while curr.next is not None and curr.next.val == curr.val:
-              curr.next = curr.next.next  
-            curr = curr.next
+            while curr.next and curr.next.val == curr.val: #This handles deleting the node. we need to make sure the next node exists ie doing curr.next[while curr.next]
+              curr.next = curr.next.next  # this deletes the curr.next node and assigns curr.next to the node after curr.next
+            curr = curr.next # move curr forward after  deletion and iteration
         return head
 
         
